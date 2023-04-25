@@ -4,7 +4,7 @@ import EditPlayer from "./Edit";
 
 
 
-function TransactionTable() {
+function PlayerTable() {
   const [players, setPlayers] = useState([]);
   const [editId, setEditId] = useState(null);
 
@@ -14,13 +14,15 @@ function TransactionTable() {
       .then((players) => setPlayers(players));
 
   }, []);
+
+
   function handleDelete(id) {
     fetch(` http://localhost:3099/players/${id}`, {
       method: "DELETE",
     })
       .then((res) => {
         if (res.ok) {
-          console.log("Transaction deleted successfully!");
+          alert("Player deleted successfully!");
           setPlayers(players.filter((t) => t.id !== id));
         } else {
           throw new Error("Player could not be deleted.");
@@ -30,6 +32,8 @@ function TransactionTable() {
         console.log(err);
       });
   }
+
+
   function handleUpdate(updatedPlayer) {
     const updatedPlayers = players.map((player) =>
     player.id === updatedPlayer.id ? updatedPlayer : player
@@ -37,6 +41,8 @@ function TransactionTable() {
     setPlayers(updatedPlayers);
     setEditId(null);
     }
+
+
   return (
     <table>
       <thead>
@@ -77,4 +83,4 @@ function TransactionTable() {
     </table>
   );
 }
-export default TransactionTable;
+export default PlayerTable;

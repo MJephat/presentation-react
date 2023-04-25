@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../App.css';
 
 
-function TransactionForm() {
+function PlayerForm() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [position, setPosition] = useState("");
@@ -59,4 +59,4 @@ function TransactionForm() {
     </form>
   );
 }
-export default TransactionForm;
+export default PlayerForm;
